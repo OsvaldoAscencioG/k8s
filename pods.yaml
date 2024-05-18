@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: itl-carreras
+  labels: 
+    app: despliegue
+spec:
+  replicas: 3 
+  selector: 
+    matchLabels:
+      app: despliegue
+  template:
+    metadata:
+      labels:
+        app: despliegue
+    spec:
+      containers:
+      - name: itlapi
+        image: osvaldogallegos/itlapi  
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8082
